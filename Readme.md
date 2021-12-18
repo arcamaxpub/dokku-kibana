@@ -2,7 +2,7 @@
 
 ![Kibana 4](kibana.png)
 
-Run Kibana on dokku.
+Run Kibana 7.14.2 on dokku. The Kibana version is determined by the buildpack defined in the .buildpacks file.
 
 ## Deploy
 
