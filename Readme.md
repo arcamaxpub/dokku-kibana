@@ -2,7 +2,7 @@
 
 ![Kibana 4](kibana.png)
 
-Run Kibana 4 on dokku.
+Run Kibana on dokku.
 
 ## Deploy
 
@@ -20,6 +20,6 @@ Now push your app:
 ```
 git clone git@github.com:Aluxian/dokku-kibana.git
 cd dokku-kibana
-git remote add dokku dokku@yourserver.me:kibana
+git remote add dokku dokku@analytics.arcamax.net:kibana
 git push dokku master
 ```
