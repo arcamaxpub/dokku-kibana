@@ -37,7 +37,7 @@ Step 3: Create the kibana app:
 
 ```
 dokku apps:create kibana
-dokku apps:set kibana KIBANA_SYSTEM_PASS=<insert password from above>
+dokku config:set kibana KIBANA_SYSTEM_PASS=<insert password from above>
 dokku elasticsearch:link elasticsearch kibana
 ```
 
