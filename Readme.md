@@ -6,7 +6,7 @@ Run ElasticSearch and Kibana 7.14.2 on dokku. The Kibana version is determined b
 
 ## Deploy
 
-Step 1: From Dokku server, Install ElasticSearch and create the app and its db:
+### Step 1: From Dokku server, Install ElasticSearch and create the app and its db:
 
 ```
 dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
@@ -18,7 +18,7 @@ dokku elasticsearch:create elasticsearch
 # echo 'vm.max_map_count=262144' | tee -a /etc/sysctl.conf; sysctl -p
 ```
 
-Step 2: From Dokku server, Enter the elasticsearch instance and configure auth:
+### Step 2: From Dokku server, Enter the elasticsearch instance and configure auth:
 
 ```
 dokku elasticsearch:enter elasticsearch
@@ -38,7 +38,7 @@ bin/elasticsearch-setup-passwords auto -u "http://localhost:9200"
 exit
 ```
 
-Step 3: From Dokku server, Create the kibana app:
+### Step 3: From Dokku server, Create the kibana app:
 
 ```
 dokku apps:create kibana
@@ -50,7 +50,7 @@ dokku letsencrypt:cron-job --add kibana
 dokku elasticsearch:link elasticsearch kibana
 ```
 
-Step 4: From local computer, Now push the kibana app:
+### Step 4: From local computer, Now push the kibana app:
 
 ```
 git clone git@github.com:arcamaxpub/dokku-kibana.git dokku-kibana
@@ -60,7 +60,7 @@ git remote add dokku dokku@elasticsearch.arcamax.net:kibana
 GIT_SSH_COMMAND="ssh -i ~/.ssh/dokku_rsa" git push dokku master
 ```
 
-Step 5: Optionally, configure users:
+### Step 5: Optionally, configure users:
 
 1. Log into https://kibana.arcamax.net/ with the superuser `elastic` and the saved password from Step 2.
 2. In the hamburger menu, go to `Management -> Stack Management -> Security -> Roles` & `Management -> Stack Management -> Security -> Users`.
