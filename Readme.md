@@ -44,6 +44,7 @@ Step 3: From Dokku server, Create the kibana app:
 dokku apps:create kibana
 dokku domains:add kibana kibana.arcamax.net
 dokku config:set kibana KIBANA_SYSTEM_PASS=<insert password from above>
+dokku config:set kibana PUBLIC_BASE_URL=https://kibana.arcamax.net
 dokku letsencrypt:enable kibana
 dokku letsencrypt:cron-job --add kibana
 dokku elasticsearch:link elasticsearch kibana
