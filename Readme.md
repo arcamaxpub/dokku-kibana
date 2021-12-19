@@ -47,8 +47,8 @@ Step 4: Now push the kibana app:
 ```
 git clone git@github.com:arcamaxpub/dokku-kibana.git dokku-kibana
 # you'll need the secret dokku_rsa identity file
-GIT_SSH_COMMAND="ssh -i ~/.ssh/dokku_rsa" git remote add dokku dokku@analytics.arcamax.net:kibana
-git push dokku master
+git remote add dokku dokku@analytics.arcamax.net:kibana
+GIT_SSH_COMMAND="ssh -i ~/.ssh/dokku_rsa" git push dokku master
 ```
 
 You may now log in with the user `elastic` and the saved password from Step 2.
