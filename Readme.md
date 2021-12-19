@@ -49,4 +49,9 @@ git remote add dokku dokku@analytics.arcamax.net:kibana
 GIT_SSH_COMMAND="ssh -i ~/.ssh/dokku_rsa" git push dokku master
 ```
 
-You may now log in with the user `elastic` and the saved password from Step 2.
+Step 5: Configure users:
+
+1. Log in with the superuser `elastic` and the saved password from Step 2.
+2. In the hamburger menu, go to `Management -> Stack Management -> Security -> Users`.
+3. Create any users of the system with the role: `editor`.
+4. Log out of the superuser account.
