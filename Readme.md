@@ -20,7 +20,7 @@ dokku elasticsearch:enter analytics
 echo "discovery.type: single-node" >> config/elasticsearch.yml
 echo "xpack.security.enabled: true" >> config/elasticsearch.yml
 echo "xpack.security.transport.ssl.enabled: true" >> config/elasticsearch.yml
-echo "xpack.security.encryptionKey: \"$(openssl rand -base64 32)\"" >> config/elasticsearch.yml
+echo "xpack.security.encryptionKey: \"$(openssl rand -hex 32)\"" >> config/elasticsearch.yml
 echo "xpack.security.session.idleTimeout: \"1h\"" >> config/elasticsearch.yml
 echo "xpack.security.session.lifespan: \"30d\"" >> config/elasticsearch.yml
 exit
