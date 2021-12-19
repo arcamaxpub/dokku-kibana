@@ -39,6 +39,8 @@ Step 3: From Dokku server, Create the kibana app:
 ```
 dokku apps:create kibana
 dokku config:set kibana KIBANA_SYSTEM_PASS=<insert password from above>
+dokku letsencrypt:enable kibana
+dokku letsencrypt:cron-job --add kibana
 dokku elasticsearch:link elasticsearch kibana
 ```
 
