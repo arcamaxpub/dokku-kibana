@@ -2,7 +2,7 @@
 
 ![Kibana 4](kibana.png)
 
-Run Kibana 7.14.2 on dokku. The Kibana version is determined by the buildpack defined in the .buildpacks file.
+Run ElasticSearch and Kibana 7.14.2 on dokku. The Kibana version is determined by the buildpack defined in the .buildpacks file.
 
 ## Deploy
 
@@ -12,10 +12,10 @@ Step 1: From Dokku server, Install ElasticSearch and create the app and its db:
 dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
 dokku plugin:install https://github.com/dokku/dokku-elasticsearch.git elasticsearch
 
-# you may need to run
-# echo 'vm.max_map_count=262144' | tee -a /etc/sysctl.conf; sysctl -p
 
 dokku elasticsearch:create elasticsearch
+# you may need to run the following command and re-attempt the above command
+# echo 'vm.max_map_count=262144' | tee -a /etc/sysctl.conf; sysctl -p
 ```
 
 Step 2: From Dokku server, Enter the elasticsearch instance and configure auth:
