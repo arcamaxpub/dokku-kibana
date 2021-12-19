@@ -21,6 +21,7 @@ sed -i 5,6d config/elasticsearch.yml # delete cluster master node since this is 
 echo "discovery.type: single-node" >> config/elasticsearch.yml
 echo "xpack.security.enabled: true" >> config/elasticsearch.yml
 echo "xpack.security.transport.ssl.enabled: true" >> config/elasticsearch.yml
+echo "xpack.security.authc.api_key.enabled: true" >> config/elasticsearch.yml
 exit
 
 dokku elasticsearch:restart analytics
