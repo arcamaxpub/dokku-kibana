@@ -6,14 +6,14 @@ Run Kibana 7.14.2 on dokku. The Kibana version is determined by the buildpack de
 
 ## Deploy
 
-Install ElasticSearch and create the app and its db:
+Step 1: Install ElasticSearch and create the app and its db:
 
 ```
 dokku plugin:install https://github.com/dokku/dokku-elasticsearch.git elasticsearch
 dokku elasticsearch:create analytics
 ```
 
-Enter the elasticsearch instance and configure auth:
+Step 2: Enter the elasticsearch instance and configure auth:
 
 ```
 dokku elasticsearch:enter analytics
@@ -30,7 +30,7 @@ bin/elasticsearch-setup-passwords auto -u "http://localhost:9200"
 exit
 ```
 
-Create the kibana app:
+Step 3: Create the kibana app:
 
 ```
 dokku apps:create kibana
@@ -38,7 +38,7 @@ dokku apps:set kibana KIBANA_SYSTEM_PASS=<insert password from above>
 dokku elasticsearch:link analytics kibana
 ```
 
-Now push the kibana app:
+Step 4: Now push the kibana app:
 
 ```
 git clone git@github.com:arcamaxpub/dokku-kibana.git dokku-kibana
@@ -46,3 +46,5 @@ git clone git@github.com:arcamaxpub/dokku-kibana.git dokku-kibana
 GIT_SSH_COMMAND="ssh -i ~/.ssh/dokku_rsa" git remote add dokku dokku@analytics.arcamax.net:kibana
 git push dokku master
 ```
+
+You may now log in with the user `elastic` and the saved password from Step 2.
