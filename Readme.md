@@ -51,13 +51,4 @@ git remote add dokku dokku@analytics.arcamax.net:kibana
 GIT_SSH_COMMAND="ssh -i ~/.ssh/dokku_rsa" git push dokku master
 ```
 
-Step 5: Configure kibana:
-
-```
-dokku enter kibana
-kibana-encryption-keys generate | tail -n4 >> kibana-7.14.2-linux-x86_64/config/kibana.yml
-exit
-dokku ps:restart kibana
-```
-
 You may now log in with the user `elastic` and the saved password from Step 2.
