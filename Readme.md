@@ -11,6 +11,10 @@ Step 1: From Dokku server, Install ElasticSearch and create the app and its db:
 ```
 dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
 dokku plugin:install https://github.com/dokku/dokku-elasticsearch.git elasticsearch
+
+# you may need to run
+# echo 'vm.max_map_count=262144' | tee -a /etc/sysctl.conf; sysctl -p
+
 dokku elasticsearch:create elasticsearch
 ```
 
@@ -29,7 +33,7 @@ dokku elasticsearch:restart elasticsearch
 
 dokku elasticsearch:enter elasticsearch
 # save the output from the following command
-# this may fail to connect at first - keep trying
+# this may fail to connect while elastic is coming up - keep trying
 bin/elasticsearch-setup-passwords auto -u "http://localhost:9200"
 exit
 ```
@@ -38,6 +42,7 @@ Step 3: From Dokku server, Create the kibana app:
 
 ```
 dokku apps:create kibana
+dokku domains:add kibana kibana.arcamax.net
 dokku config:set kibana KIBANA_SYSTEM_PASS=<insert password from above>
 dokku letsencrypt:enable kibana
 dokku letsencrypt:cron-job --add kibana
@@ -48,6 +53,7 @@ Step 4: From local computer, Now push the kibana app:
 
 ```
 git clone git@github.com:arcamaxpub/dokku-kibana.git dokku-kibana
+cd dokku-kibana
 # you'll need the secret dokku_rsa identity file
 git remote add dokku dokku@elasticsearch.arcamax.net:kibana
 GIT_SSH_COMMAND="ssh -i ~/.ssh/dokku_rsa" git push dokku master
