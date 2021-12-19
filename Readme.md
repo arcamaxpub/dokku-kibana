@@ -22,11 +22,12 @@ echo "xpack.security.transport.ssl.enabled: true" >> config/elasticsearch.yml
 exit
 
 dokku elasticsearch:restart analytics
-dokku elasticsearch:enter analytics
 
+dokku elasticsearch:enter analytics
 # save the output from the following command
 # this may fail to connect at first - keep trying
 bin/elasticsearch-setup-passwords auto -u "http://localhost:9200"
+exit
 ```
 
 Create the kibana app:
